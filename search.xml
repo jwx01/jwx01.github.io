@@ -1,0 +1,1030 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>CSS技术</title>
+    <url>/2021/05/16/css/</url>
+    <content><![CDATA[<h1 id="CSS技术"><a href="#CSS技术" class="headerlink" title="CSS技术"></a>CSS技术</h1><blockquote>
+<p>CSS 是「层叠样式表单」。是用于(增强)控制网页样式并允许将样式信息与网页内容分离的一种标记性语言。</p>
+</blockquote>
+<span id="more"></span>
+<h1 id="语法规则"><a href="#语法规则" class="headerlink" title="语法规则"></a>语法规则</h1><h2 id="1、格式："><a href="#1、格式：" class="headerlink" title="1、格式："></a>1、格式：</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">选择器&#123;  </span><br><span class="line">        属性：值；</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<p><font color=#999AAA >选择器：浏览器根据“选择器”决定受 CSS 样式影响的 HTML 元素（标签）。</font></p>
+<p><font color=#999AAA >属性 (property) ：是你要改变的样式名，并且每个属性都有一个值。属性和值被冒号分开，并由花括号包围，这样就组成了一个完整的样式声明（declaration），例如：p {color: blue}</font></p>
+<p><font color=#999AAA >多个声明：如果要定义不止一个声明，则需要用分号将每个声明分开。虽然最后一条声明的最后可以不加分号(但尽量在每条声明的末尾都加上分号)</font></p>
+<p><font color=#999AAA >注：一般一行只描述一个属性</font></p>
+<h2 id="2、CSS注释："><a href="#2、CSS注释：" class="headerlink" title="2、CSS注释："></a>2、CSS注释：</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*CSS注释的内容*/</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="CSS和-HTML-的结合方式"><a href="#CSS和-HTML-的结合方式" class="headerlink" title="CSS和 HTML 的结合方式"></a>CSS和 HTML 的结合方式</h1><h2 id="1、-方式一"><a href="#1、-方式一" class="headerlink" title="1、 方式一"></a>1、 方式一</h2><p><font color=#999AAA >在标签的 style 属性上设置”key:value value;”，修改标签样式：</font></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--分别定义两个 div、span 标签，分别修改每个 div 标签的样式为：边框 1 个像素，实线，红色。--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;border: 1px solid red;&quot;</span>&gt;</span>div 标签 1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;border: 1px solid red;&quot;</span>&gt;</span>div 标签 2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;border: 1px solid red;&quot;</span>&gt;</span>span 标签 1<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;border: 1px solid red;&quot;</span>&gt;</span>span 标签 2<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这种方式的缺点：</p>
+<p>（1）如果标签多了。样式多了。代码量非常庞大。</p>
+<p>（2）可读性非常差。</p>
+<p>（3）CSS代码没什么复用性可言。</p>
+<h2 id="2-方式二"><a href="#2-方式二" class="headerlink" title="2.方式二"></a>2.方式二</h2><p><font color=#999AAA >在 head 标签中，使用 style 标签来定义各种自己需要的 css 样式：</font></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">格式：</span><br><span class="line">    xxx &#123;</span><br><span class="line">       Key :value value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">例 ：</span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--style 标签专门用来定义 css 样式代码--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">      <span class="comment">/* 需求 1：分别定义两个 div、span 标签，分别修改每个 div 标签的样式为：边框 1 个像素，实线，红色。*/</span></span></span><br><span class="line"><span class="css">      <span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="css">      	<span class="attribute">border</span>: <span class="number">1px</span> solid red;</span></span><br><span class="line"><span class="css">      &#125;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">span</span>&#123;</span></span><br><span class="line"><span class="css">     	 <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span></span><br><span class="line"><span class="css">      &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>div 标签 1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>div 标签 2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>span 标签 1<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>span 标签 2<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这种方式的缺点：</p>
+<p>（1）只能在同一页面内复用代码，不能在多个页面中复用 CSS 代码。</p>
+<p>（2）维护起来不方便，实际的项目中会有成千上万的页面，要到每个页面中去修改。工作量太大了。</p>
+<h2 id="3-方式三"><a href="#3-方式三" class="headerlink" title="3.方式三"></a>3.方式三</h2><p><font color=#999AAA >把 css 样式写成一个单独的 css 文件，再通过 link 标签引入即可复用。使用 html 的 &lt;link rel=”stylesheet” type=”text/css”href=”./styles.css”/&gt; 标签 导入 css 样式文件。</font></p>
+<p>（1）css 文件内容：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid yellow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">span</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（2）html文件内容</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--link 标签专门用来引入 css 样式代码--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">href</span>=<span class="string">&quot;1.css&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>div 标签 1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>div 标签 2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>span 标签 1<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>span 标签 2<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h1 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h1><h2 id="1、标签名选择器"><a href="#1、标签名选择器" class="headerlink" title="1、标签名选择器"></a>1、标签名选择器</h2><p><font color=#999AAA > 标签名选择器，可以决定哪些标签被动的使用这个样式。</font></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">格式：</span><br><span class="line">    标签名&#123;</span><br><span class="line">   		 属性：值;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">例：</span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>CSS 选择器<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">      <span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">border</span>: <span class="number">1px</span> solid yellow;</span></span><br><span class="line"><span class="css">        <span class="attribute">color</span>: blue;</span></span><br><span class="line"><span class="css">        <span class="attribute">font-size</span>: <span class="number">30px</span>;</span></span><br><span class="line"><span class="css">      &#125;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">span</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">border</span>: <span class="number">5px</span> dashed blue;</span></span><br><span class="line"><span class="css">        <span class="attribute">color</span>: yellow;</span></span><br><span class="line"><span class="css">        <span class="attribute">font-size</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="css">      &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">    在所有 div 标签上修改字体颜色为蓝色，字体大小 30 个像素。边框为 1 像素黄色实线。并且修改所有 span 标签的字体颜色为黄色，字体大小 20 个像素。边框为 5 像素蓝色虚线。</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>div 标签 1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>div 标签 2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>span 标签 1<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>span 标签 2<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="2、id-选择器"><a href="#2、id-选择器" class="headerlink" title="2、id 选择器"></a>2、id 选择器</h2><p><font color=#999AAA >  id 选择器，可以让我们通过 id 属性选择性的去使用这个样式。</font></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">格式：</span><br><span class="line">    #id属性值&#123;</span><br><span class="line">   			 属性：值;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">例：</span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>ID 选择器<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">      <span class="selector-id">#id001</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">color</span>: blue;</span></span><br><span class="line"><span class="css">        <span class="attribute">font-size</span>: <span class="number">30px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">border</span>: <span class="number">1px</span> yellow solid;</span></span><br><span class="line"><span class="css">      &#125;</span></span><br><span class="line"><span class="css">      <span class="selector-id">#id002</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">color</span>: red;</span></span><br><span class="line"><span class="css">        <span class="attribute">font-size</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">border</span>: <span class="number">5px</span> blue dotted ;</span></span><br><span class="line"><span class="css">      &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">    需求 1：分别定义两个 div 标签，</span></span><br><span class="line"><span class="comment">    第一个 div 标签定义 id 为 id001 ，然后根据 id 属性定义 css 样式修改字体颜色为蓝色，</span></span><br><span class="line"><span class="comment">    字体大小 30 个像素。边框为 1 像素黄色实线。</span></span><br><span class="line"><span class="comment">    第二个 div 标签定义 id 为 id002 ，然后根据 id 属性定义 css 样式 修改的字体颜色为红色，字体大小 20 个像素。</span></span><br><span class="line"><span class="comment">    边框为 5 像素蓝色点线。</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;id002&quot;</span>&gt;</span>div 标签 1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;id001&quot;</span>&gt;</span>div 标签 2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-、class-选择器（类选择器）"><a href="#3-、class-选择器（类选择器）" class="headerlink" title="3 、class 选择器（类选择器）"></a>3 、class 选择器（类选择器）</h2><p><font color=#999AAA >  class 类型选择器，可以通过 class 属性有效的选择性地去使用这个样式。</font></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">格式：</span><br><span class="line">   . class 属性值&#123;</span><br><span class="line">            属性：值;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">例：</span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>class 类型选择器<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">      <span class="selector-class">.class01</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">color</span>: blue;</span></span><br><span class="line"><span class="css">        <span class="attribute">font-size</span>: <span class="number">30px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">border</span>: <span class="number">1px</span> solid yellow;</span></span><br><span class="line"><span class="css">      &#125;</span></span><br><span class="line"><span class="css">      <span class="selector-class">.class02</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">color</span>: grey;</span></span><br><span class="line"><span class="css">        <span class="attribute">font-size</span>: <span class="number">26px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span></span><br><span class="line"><span class="css">      &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">    需求 1：修改 class 属性值为 class01 的 span 或 div 标签，字体颜色为蓝色，字体大小 30 个像素。边框为 1 像素黄色实线。</span></span><br><span class="line"><span class="comment">    需求 2：修改 class 属性值为 class02 的 div 标签，字体颜色为灰色，字体大小 26 个像素。边框为 1 像素红色实线。</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;class02&quot;</span>&gt;</span>div 标签 class01<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;class02&quot;</span>&gt;</span>div 标签<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;class02&quot;</span>&gt;</span>span 标签 class01<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>span 标签 2<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-、组合选择器"><a href="#4-、组合选择器" class="headerlink" title="4 、组合选择器"></a>4 、组合选择器</h2><p><font color=#999AAA >   组合选择器可以让多个选择器共用同一个 css 样式代码。</font></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">格式：</span><br><span class="line">    选择器 1，选择器 2，选择器 n&#123;</span><br><span class="line">          属性：值;</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">例：</span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>class 类型选择器<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">      <span class="selector-class">.class01</span> , <span class="selector-id">#id01</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">color</span>: blue;</span></span><br><span class="line"><span class="css">        <span class="attribute">font-size</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">border</span>: <span class="number">1px</span> yellow solid;</span></span><br><span class="line"><span class="css">      &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">    需求 1：修改 class=&quot;class01&quot; 的 div 标签 和 id=&quot;id01&quot; 所有的 span 标签，</span></span><br><span class="line"><span class="comment">    字体颜色为蓝色，字体大小 20 个像素。边框为 1 像素黄色实线。</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;id01&quot;</span>&gt;</span>div 标签 class01<span class="tag">&lt;/<span class="name">div</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> &gt;</span>span 标签<span class="tag">&lt;/<span class="name">span</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>div 标签<span class="tag">&lt;/<span class="name">div</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>div 标签 id01<span class="tag">&lt;/<span class="name">div</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="常用样式"><a href="#常用样式" class="headerlink" title="常用样式"></a>常用样式</h1><h2 id="1、字体颜色"><a href="#1、字体颜色" class="headerlink" title="1、字体颜色"></a>1、字体颜色</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">color</span>：red；</span><br><span class="line"><span class="comment">/*颜色可以写颜色名如：black, blue, red, green 等</span></span><br><span class="line"><span class="comment">颜色也可以写 rgb 值如：rgb(255,0,0)</span></span><br><span class="line"><span class="comment">颜色还可以写十六进制表示值，如果写十六进制值必须加#，如：#00F6DE*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="2、宽度"><a href="#2、宽度" class="headerlink" title="2、宽度"></a>2、宽度</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">width</span>:<span class="number">19px</span>;</span><br><span class="line"><span class="comment">/*宽度可以写像素值：19px；</span></span><br><span class="line"><span class="comment">也可以写百分比值：20%；*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="3、高度"><a href="#3、高度" class="headerlink" title="3、高度"></a>3、高度</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">height</span>:<span class="number">20px</span>;</span><br><span class="line"><span class="comment">/*高度可以写像素值：19px；</span></span><br><span class="line"><span class="comment">也可以写百分比值：20%；*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="4、背景颜色"><a href="#4、背景颜色" class="headerlink" title="4、背景颜色"></a>4、背景颜色</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">background-color</span>:<span class="number">#0F2D4C</span></span><br></pre></td></tr></table></figure>
+<h2 id="5、字体样式："><a href="#5、字体样式：" class="headerlink" title="5、字体样式："></a>5、字体样式：</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*字体颜色*/</span></span><br><span class="line"><span class="attribute">color</span>：<span class="selector-id">#FF0000</span>；</span><br><span class="line"><span class="comment">/* 字体大小*/</span></span><br><span class="line"><span class="attribute">font-size</span>：<span class="number">20px</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="6、边框"><a href="#6、边框" class="headerlink" title="6、边框"></a>6、边框</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">border</span>：<span class="number">1px</span> solid red;</span><br></pre></td></tr></table></figure>
+<h2 id="7、DIV-居中"><a href="#7、DIV-居中" class="headerlink" title="7、DIV 居中"></a>7、DIV 居中</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">margin-left</span>:auto;</span><br><span class="line"><span class="attribute">margin-right</span>:auto;</span><br></pre></td></tr></table></figure>
+<h2 id="8、文本居中："><a href="#8、文本居中：" class="headerlink" title="8、文本居中："></a>8、文本居中：</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">text-align</span>:center;</span><br></pre></td></tr></table></figure>
+<h2 id="9、超连接去下划线"><a href="#9、超连接去下划线" class="headerlink" title="9、超连接去下划线"></a>9、超连接去下划线</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">text-decoration</span>:none;</span><br></pre></td></tr></table></figure>
+<h2 id="10、表格细线"><a href="#10、表格细线" class="headerlink" title="10、表格细线"></a>10、表格细线</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">table</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid black; <span class="comment">/*设置边框*/</span></span><br><span class="line">  <span class="attribute">border-collapse</span>: collapse; <span class="comment">/*将边框合并*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">td</span>,<span class="selector-tag">th</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid black; <span class="comment">/*设置边框*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="11、列表去除修饰"><a href="#11、列表去除修饰" class="headerlink" title="11、列表去除修饰"></a>11、列表去除修饰</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">ul</span> &#123;</span><br><span class="line"><span class="attribute">list-style</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><font color=#999AAA > 示例代码：</font></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh_CN&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>css常用样式.html<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">    <span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">color</span>: red;</span></span><br><span class="line"><span class="css">        <span class="attribute">border</span>: <span class="number">10px</span> yellow solid;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>:<span class="number">300px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">height</span>:<span class="number">300px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">background-color</span>:green;</span></span><br><span class="line"><span class="css">        <span class="attribute">font-size</span>:<span class="number">30px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">margin-left</span>:auto;</span></span><br><span class="line"><span class="css">        <span class="attribute">margin-right</span>:auto;</span></span><br><span class="line"><span class="css">        <span class="attribute">text-align</span>:center;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">table</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">border</span>: <span class="number">1px</span> red solid;</span></span><br><span class="line"><span class="css">        <span class="attribute">border-collapse</span>:collapse;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">td</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">border</span>: <span class="number">1px</span> red solid;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">a</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">text-decoration</span>:none;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">ul</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">list-style</span>: none;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>11111111111<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>11111111111<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>11111111111<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>11111111111<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>11111111111<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>1.1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>1.2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.baidu.com&quot;</span>&gt;</span>百度<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>我是 div 标签<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><font color=#999AAA > 效果图：</font><br><img src="https://img-blog.csdnimg.cn/20210516124825297.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzU3OTA2MzE1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p>“本内容为作者本人亲自编写，如有不对、不严谨或侵权问题请私聊作者进行修改或删除，若是大佬来刷存在感，请您绕行，更多关于编程的知识请关注作者微信公众号:”</p>
+<p><img src="https://img-blog.csdnimg.cn/2021050917494311.jpg" alt="更多关于编程的知识请关注作者微信公众号: "></p>
+]]></content>
+      <categories>
+        <category>Java Web</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring5入门(一)</title>
+    <url>/2021/05/20/spring1/</url>
+    <content><![CDATA[<h1 id="Spring简介"><a href="#Spring简介" class="headerlink" title="Spring简介"></a>Spring简介</h1><blockquote>
+<p>Spring框架是一个开放源代码的应用程序框架，由Rod Johnson发起，是针对bean的生命周期进行管理的轻量级容器（lightweight container）。 Spring解决了开发者在J2EE开发中遇到的许多常见的问题，提供了功能强大IOC、AOP及Web MVC等功能。Spring可以单独应用于构筑应用程序，也可以和Struts、Webwork、Tapestry等众多Web框架组合使用，并且可以与 Swing等桌面应用程序AP组合。</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="一、Spring入门了解"><a href="#一、Spring入门了解" class="headerlink" title="一、Spring入门了解"></a>一、Spring入门了解</h1><h2 id="1、Spring概念"><a href="#1、Spring概念" class="headerlink" title="1、Spring概念"></a>1、Spring概念</h2><blockquote>
+<p>Spring是轻量级开源框架,可以解决企业应用开发的复杂性</p>
+</blockquote>
+<h2 id="2、Spring框架的优点"><a href="#2、Spring框架的优点" class="headerlink" title="2、Spring框架的优点"></a>2、Spring框架的优点</h2><ul>
+<li>方便解耦、简化开发</li>
+<li>支持AOP</li>
+<li>方便程序的测试</li>
+<li>方便和其他优秀框架整合</li>
+<li>降低API的使用难度</li>
+<li>支持声明式事务处理</li>
+</ul>
+<h2 id="3、Spring的两个核心部分"><a href="#3、Spring的两个核心部分" class="headerlink" title="3、Spring的两个核心部分"></a>3、Spring的两个核心部分</h2><p>（1)、IOC（控制反转）：</p>
+<blockquote>
+<p>使用Spring框架之后，对象的实例不在由调用者来创建，而是由Spring容器来创建，Spring容器会负者控制程序之间的关系，而不是由调用者的程序代码直接控制。这样，控制权由应用代码转移到了Spring容器，控制权发生了反转。与依赖注入（DI）含义相同，只不过是从两个不同的角度叙述的同一个概念。</p>
+</blockquote>
+<p>（2）、AOP</p>
+<blockquote>
+<p>面向切面编程（方面），利用 AOP 可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。</p>
+</blockquote>
+<h2 id="4、入门案例"><a href="#4、入门案例" class="headerlink" title="4、入门案例"></a>4、入门案例</h2><h3 id="（1）Spring5的下载"><a href="#（1）Spring5的下载" class="headerlink" title="（1）Spring5的下载"></a>（1）Spring5的下载</h3><p>下载网址：<a href="https://repo.spring.io/release/org/springframework/spring/">https://repo.spring.io/release/org/springframework/spring/</a><br>选择最新最稳定版本（5.3.7）<br><img src="https://img-blog.csdnimg.cn/20210520222921612.png" alt="在这里插入图片描述"></p>
+<h3 id="（2）将下载下来的Spring压缩包进行解压"><a href="#（2）将下载下来的Spring压缩包进行解压" class="headerlink" title="（2）将下载下来的Spring压缩包进行解压"></a>（2）将下载下来的Spring压缩包进行解压</h3><p>解压完的目录如下：<br><img src="https://img-blog.csdnimg.cn/20210520223028796.png" alt="在这里插入图片描述"></p>
+<h3 id="（3）创建一个普通的JAVA工程"><a href="#（3）创建一个普通的JAVA工程" class="headerlink" title="（3）创建一个普通的JAVA工程"></a>（3）创建一个普通的JAVA工程</h3><p>具体步骤如下图：</p>
+<p><img src="https://img-blog.csdnimg.cn/2021052022304075.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2021052022313526.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210520223209786.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210520223333676.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210520223423998.png" alt="在这里插入图片描述"></p>
+<h3 id="（4）导入JAR包"><a href="#（4）导入JAR包" class="headerlink" title="（4）导入JAR包"></a>（4）导入JAR包</h3><ol>
+<li>在Java工程HelloWork下键一个“lib”的文件夹</li>
+<li>将刚才下载的Spring中的四个核心包（spring-beans.jar、spring-context.jar、spring-core.jar、spring-expression.jar)和一个依赖包（commons-logging.jar）（该JAR包可以通过<a href="http://commons.apache.org/proper/commons-logging/download_logging.cgi%E4%B8%8B%E8%BD%BD%EF%BC%89%E5%A4%8D%E5%88%B6%E5%88%B0lib%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%AD">http://commons.apache.org/proper/commons-logging/download_logging.cgi下载）复制到lib文件夹中</a></li>
+<li>将上面的5个JAR包导入到项目中，具体步骤如下：</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20210520223526525.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210520223652566.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210520224018915.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210520223742119.png" alt="在这里插入图片描述"></p>
+<h3 id="（5）创建接口"><a href="#（5）创建接口" class="headerlink" title="（5）创建接口"></a>（5）创建接口</h3><p>在ser目录下，创建一个com.jia.ioc包，并在包中创建接口UserDao,然后在接口中定义一个say()方法，具体如下：</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jia.ioc;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserDao</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="（6）创建接口的实现类"><a href="#（6）创建接口的实现类" class="headerlink" title="（6）创建接口的实现类"></a>（6）创建接口的实现类</h3><p>在com.jia.ioc包下，创建UserDao接口的实现类UserDaoImpl，该类需要实现接口中的say()方法，并在方法中编写一条输出语句，具体如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jia.ioc;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoImpol</span> <span class="keyword">implements</span> <span class="title">UserDao</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;userDao say hello word&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="（7）创建配置文件"><a href="#（7）创建配置文件" class="headerlink" title="（7）创建配置文件"></a>（7）创建配置文件</h3><p>在src目录下创建Spring的配置文件ApplicationContext.xml，并在配置文件中创建一个id为userDao的Bean，具体如下：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag"><span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag"><span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="string"><span class="tag">http://www.springframework.org/schema/beans/spring-beans.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userDao&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.jia.ioc.UserDaoImpol&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="（8）创建测试类"><a href="#（8）创建测试类" class="headerlink" title="（8）创建测试类"></a>（8）创建测试类</h3><p>在com.jia.ioc包下，创建测试类Text，并在类中编写main()方法。具体如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jia.ioc;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Text</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1.初始化spring容器，加载配置文件</span></span><br><span class="line">        ApplicationContext applicationContext = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">&quot;applicationContext.xml&quot;</span>);</span><br><span class="line">        <span class="comment">//2.通过容器获取userDao实例</span></span><br><span class="line">        UserDao userDao = (UserDao) applicationContext.getBean(<span class="string">&quot;userDao&quot;</span>);</span><br><span class="line">        <span class="comment">//3.调用实例中的say()方法</span></span><br><span class="line">        userDao.say();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>持续更新中 》 》 》</strong></p>
+<h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p>“本内容为作者本人亲自编写，如有不对、不严谨或侵权问题请私聊作者进行修改或删除，若是大佬来刷存在感，请您绕行，更多关于编程的知识请关注作者微信公众号:”</p>
+<p><img src="https://img-blog.csdnimg.cn/2021050917494311.jpg" alt="更多关于编程的知识请关注作者微信公众号: "></p>
+]]></content>
+      <categories>
+        <category>SSM</category>
+      </categories>
+      <tags>
+        <tag>SSM</tag>
+        <tag>Spring</tag>
+        <tag>框架</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring Boot</title>
+    <url>/2021/05/22/Spring%20Boot/</url>
+    <content><![CDATA[<h1 id="Spring-Boot简介"><a href="#Spring-Boot简介" class="headerlink" title="Spring Boot简介"></a>Spring Boot简介</h1><blockquote>
+<p>Spring Boot是Spring家族的一个子项目，其设计初衷是为了简化Spring配置，从而让用户可以轻松构建独立运行的程序，并极大提高开发效率</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="一、Spring-Boot-入门"><a href="#一、Spring-Boot-入门" class="headerlink" title="一、Spring Boot 入门"></a>一、Spring Boot 入门</h1><h2 id="1、使用Maven方式构建Spring-Boot项目"><a href="#1、使用Maven方式构建Spring-Boot项目" class="headerlink" title="1、使用Maven方式构建Spring Boot项目"></a>1、使用Maven方式构建Spring Boot项目</h2><h3 id="1）初始化IDEA"><a href="#1）初始化IDEA" class="headerlink" title="1）初始化IDEA"></a>1）初始化IDEA</h3><h4 id="（1）Maven初始化"><a href="#（1）Maven初始化" class="headerlink" title="（1）Maven初始化"></a>（1）Maven初始化</h4><p>​        如下图，打开IDEA进入欢迎界面，单击【Configure】-&gt;【Settings】选项进入默认项目设置页面，搜索“Maven”找到Maven设置选项，在右侧对应的设置界面中进行Maven初始化设置</p>
+<p><img src="https://img-blog.csdnimg.cn/20210516205604400.png" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20210516210424489.png" alt="在这里插入图片描述"></p>
+<p>​        如下图对Maven安装目录（Maven home directory）、Maven的settings配置文件（User settings file）和Maven本地仓库（Local repository)进行配置，配置完成后单击【Apply】-&gt;【OK】完成Maven的初始化设置</p>
+<p><img src="https://img-blog.csdnimg.cn/20210516210731333.png" alt="在这里插入图片描述"></p>
+<h4 id="（2）JDK初始化"><a href="#（2）JDK初始化" class="headerlink" title="（2）JDK初始化"></a>（2）JDK初始化</h4><p>​        在IDEA欢迎界面，单击【Configure】-&gt;【Structure for New Projects】选项进入Project Structure设置页面，选择【Project Settings】-&gt;【Project】选项，在打开的右侧页面中对JDK初始化设置，具体如下图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210516212408756.png" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20210516212943124.png" alt="在这里插入图片描述"></p>
+<h3 id="2）创建Maven项目"><a href="#2）创建Maven项目" class="headerlink" title="2）创建Maven项目"></a>2）创建Maven项目</h3><p>​        在IDEA欢迎页面，单击【Create New Project】按钮创建项目，出现如下图界面：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210516214001594.png" alt="在这里插入图片描述"></p>
+<p>​        在上图界面中选择【Maven】选项，右侧选择当前项目的JDK，单击【Next】按钮进入Maven项目创建页面，具体如下图</p>
+<p><img src="https://img-blog.csdnimg.cn/20210516214855684.png" alt="在这里插入图片描述"></p>
+<p>​        项目名称和存储路径是设置好后单击【Finish】按钮完成项目的创建</p>
+<p>​        项目创建完成后，会默认打开创建Maven项目生成的pom.xml依赖文件</p>
+<p><strong>特别注意：</strong><br><font color=#999AAA >在打开的界面中，“Maven projects need to be imported”提示框有两个选项：“ImportChanges”表示导入版本变化，只会导入本次变化的依赖；“Enable Auto-Import”表示开启自动导入，后期会持续监测并自动导入变化的依赖。这里选择“Enable Auto-Import”选项，一旦pom.xml文件发生更改，依赖会自动导入。</font></p>
+<h3 id="3）导入Spring-Boot相关依赖"><a href="#3）导入Spring-Boot相关依赖" class="headerlink" title="3）导入Spring Boot相关依赖"></a>3）导入Spring Boot相关依赖</h3><p>​        打开maven下的pom.xml文件，在该文件中添加构建Spring Boot项目和Web场景开发对应的依赖，代码如下:</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--引入Spring Boot依赖--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--引入Web场景依赖启动器--&gt;</span>、</span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p><font color=#999AAA >上述代码说明</font>：</p>
+<blockquote>
+<p>上述代码中，<code>&lt;parent&gt;</code>标签中添加的spring-boot-starter-parent依赖是Spring Boot框架集成项目的统一父类管理依赖，添加该依赖后就可以使用Spring Boot的相关特性；<code>&lt;version&gt;</code>标签指定Spring Boot的版本号是2.4.5； <code>&lt;dependencies&gt;</code>标签中添加的spring-boot-starter-web依赖是Spring Boot框架对Web开发场景集成支持的依赖启动器，添加该依赖后就可以自动导入Spring MVC框架相关依赖进行Web开发了</p>
+</blockquote>
+<h3 id="4）编写主程序启动类"><a href="#4）编写主程序启动类" class="headerlink" title="4）编写主程序启动类"></a>4）编写主程序启动类</h3><p>​        在上文创建的项目的java目录下创建一个包，在该包下新建一个主程序启动类,如下图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210516222955485.png" alt="在这里插入图片描述"></p>
+<p><font color=#999AAA >启动类中的代码如下：</font></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringApplication;</span><br><span class="line"><span class="meta">@SpringBootApplication</span>  <span class="comment">//标记该类为主程序启动类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MavenApplication</span> </span>&#123;</span><br><span class="line">    <span class="comment">//主程序启动方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(MavenApplication.class,args);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p> 上述代码说明：</p>
+<blockquote>
+<p>上面代码第3行中的@SpringBootApplication注解是Spring Boot框架的核心注解，该注解用于表明MavenApplication类是Spring Boot项目的主程序启动类。第7行代码调用SpringApplication.run(）方法启动主程序类</p>
+</blockquote>
+<h3 id="5）创建一个用于Web访问的Controller"><a href="#5）创建一个用于Web访问的Controller" class="headerlink" title="5）创建一个用于Web访问的Controller"></a>5）创建一个用于Web访问的Controller</h3><p>​        在上文创建的下创建名称为controller的包，在该包下创建一个请求处理控制类，如下图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210516230250164.png" alt="在这里插入图片描述"></p>
+<p>​        类中编写一个请求处理方法，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span>  <span class="comment">//该注解为组合注解，等同于Spring中的@Controller+@ResponseBody注解</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@GetMapping(&quot;/hello&quot;)</span> <span class="comment">//该注解等同于Spring中@RequestMapping（RequestMethod.GET）</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">boot_hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;haha123&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><font color=#999AAA >上述代码说明：</font></p>
+<blockquote>
+<p>请求处理类HelloController和请求处理方法boot_hello()都使用了注解，其中：<br>（1）@RestController 注解为一个组合注解，等同于Spring中的@Controller和@ResponseBody两个注解结合使用的效果。主要作用是将当前类作为控制层的组件添加到Spring容器中，同时该类的方法无法返回JSP页面，而且会返回JSON字符串。<br>（2）@GetMapping注解等同于@RequestMapping（RequestMethod.GET）注解，主要作用是设置方法的访问路径并限定其访问方式为Get。上述代码中，boot_hello（）方法的请求处理路径为“/hello”，并且方法的返回值是一个“haha123”的字符串对象。</p>
+</blockquote>
+<h3 id="6）运行项目"><a href="#6）运行项目" class="headerlink" title="6）运行项目"></a>6）运行项目</h3><p>运行主程序启动类，项目启动成功后，在控制台上会发现Spring Boot项目默认端口号，此时，可以在浏览器上访问“http:/localhost:8080/hello”,页面上会输出的内容为“haha123”，如下图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210516234334874.png" alt="在这里插入图片描述"></p>
+<h3 id="7）简化部署"><a href="#7）简化部署" class="headerlink" title="7）简化部署"></a>7）简化部署</h3><p>（1）到SpringBoot官网找到“Creating an Executable Jar”，将xml的代码复制到pom.xml文件中，具体如下图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210518094424152.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210518094519776.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2021051809464680.png" alt="在这里插入图片描述"></p>
+<p>（2）在IDEA中的Maven管理器下的Lifecycle执行package文件，就会自动在taraget下打一个jar包,具体如下图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210518095720995.png" alt="在这里插入图片描述"></p>
+<p>（3）在cmd中执行该文件,具体如下图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210518100924281.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2021051810035896.png" alt="在这里插入图片描述"></p>
+<h2 id="2、使用Spring-Initializr-方式快速构建Spring-Boot项目"><a href="#2、使用Spring-Initializr-方式快速构建Spring-Boot项目" class="headerlink" title="2、使用Spring Initializr 方式快速构建Spring Boot项目"></a>2、使用Spring Initializr 方式快速构建Spring Boot项目</h2><h3 id="1）创建Spring-Boot-项目"><a href="#1）创建Spring-Boot-项目" class="headerlink" title="1）创建Spring Boot 项目"></a>1）创建Spring Boot 项目</h3><p>​        打开IDEA，单击【Create New Project】新建项目，在弹出的“New Porject”界面中选择【Spring Initializr】选项进行Spring Boot项目快速构建，具体如下图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210517212942846.png" alt="在这里插入图片描述"></p>
+<p>上图具体说明：</p>
+<blockquote>
+<p>“Project SDK”用于设置创建项目使用的JDK版本<br>“Choose Initializr Service URL”（选择初始化服务地址）这里选择使用默认的初始化服务地址“<a href="https://start.apring.io”进行spring/">https://start.apring.io”进行Spring</a> Boot项目创建（特别注意：使用快速方式创建Spring Boot项目时，所在主机须在联网状态下）</p>
+</blockquote>
+<p>​        选择完成后单击【Next】进入下一步，如下图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210517214721812.png" alt="在这里插入图片描述"></p>
+<p>设置好后单击【Next】进入Spring Boot场景依赖选择界面，具体如下图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210517221406922.png" alt="在这里插入图片描述"></p>
+<p>对上图的Spring Boot场景依赖选择界面具体说明：（本项目选择的Web开发场景下的Spring Web依赖)</p>
+<blockquote>
+<p>（1）页面顶部的中间位置可以选择Spring Boot版本，默认显示的是最新稳定的版本。如果想自定义项目版本号，则需要进入项目的pom.xml文件，在对相应依赖的<code>&lt;version&gt;</code>标签中指定版本号。<br>（2）页面左侧汇总了开发场景。每个开发场景下会包含多种技术实现方案，同时提供多种集成的模块依赖。<br>（3）页面中间展示了开发场景中包含的依赖模块。<br>（4）页面右侧展示已经选择的依赖模块。</p>
+</blockquote>
+<p>选择完成后单击【Next】进入填写项目名称和路径的界面，如下图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210517221842187.png" alt="在这里插入图片描述"></p>
+<p><font color=#999AAA >对上图的说明：</font></p>
+<blockquote>
+<p>（1）Project name默认生成与Artifact一致的项目名<br>（2）Project location 默认使用的是上次创建项目所选的地址</p>
+</blockquote>
+<p>填写完成后单击【Finish】完成项目的创建</p>
+<h3 id="2）创建一个用于Web访问的Controller"><a href="#2）创建一个用于Web访问的Controller" class="headerlink" title="2）创建一个用于Web访问的Controller"></a>2）创建一个用于Web访问的Controller</h3><p>在chapter01的com.jia包下创建名称为controller的包，在该包下创建一个请求控制类，并编写请求处理方法，具体代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span>  <span class="comment">//该注解为组合注解，等同于Spring中的@Controller+@ResponseBody注解</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@GetMapping(&quot;/hello&quot;)</span> <span class="comment">//该注解等同于Spring中@RequestMapping（RequestMethod.GET）</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">boot_hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;haha123&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="3）运行项目"><a href="#3）运行项目" class="headerlink" title="3）运行项目"></a>3）运行项目</h3><p>运行chapter01项目的主程序启动类Chapter01Application，项目运行成功后，在浏览器上访问“<a href="http://localhost:8080/hello%E2%80%9D%E9%A1%B5%E9%9D%A2%E4%B8%8A%E4%BC%9A%E8%BE%93%E5%87%BA%E2%80%9Chaha123%E2%80%9D%E5%85%B7%E4%BD%93%E5%A6%82%E4%B8%8B%E5%9B%BE%EF%BC%9A">http://localhost:8080/hello”页面上会输出“haha123”具体如下图：</a></p>
+<p><img src="https://img-blog.csdnimg.cn/20210517224628336.png" alt="在这里插入图片描述"></p>
+<h2 id="3、Spring-Boot原理分析"><a href="#3、Spring-Boot原理分析" class="headerlink" title="3、Spring Boot原理分析"></a>3、Spring Boot原理分析</h2><h3 id="1）POM文件"><a href="#1）POM文件" class="headerlink" title="1）POM文件"></a>1）POM文件</h3><h4 id="（1）父项目依赖管理"><a href="#（1）父项目依赖管理" class="headerlink" title="（1）父项目依赖管理"></a>（1）父项目依赖管理</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> </span><br><span class="line"> <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line">他的父项目</span><br><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>上述代码说明：</p>
+<blockquote>
+<p>将spring-boot-starter-parent依赖作为Spring Boot项目的统一父项目依赖管理，并将项目版本号统一为2.4.5，改版本号根据实际开发需求是可以修改的。</p>
+<p>spring-boot-dependencies依赖是spring-boot-starter-parent的父项目，是真正管理Spring Boot应用里面的所用依赖版本；是Spring Boot的版本仲裁中心；以后导入依赖默认是不需要写版本的（没有在dependencies里面管理的依赖自然是需要声明版本号的）</p>
+</blockquote>
+<h4 id="（2）启动器"><a href="#（2）启动器" class="headerlink" title="（2）启动器"></a>（2）启动器</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上述代码说明：</p>
+<blockquote>
+<p>spring-boot-starter:  spring-boot场景启动器</p>
+<p>spring-boot-starter-web依赖启动器的作用是提供Web开发场景所需要的底层所有依赖文件、</p>
+<p>Spring Boot将所有的功能场景都抽取出来，做成一个个的starter（启动器），只需要在项目里面引入这些starter相关场景的所有依赖都会导入进来。要用什么功能就导入什么场景的启动器</p>
+</blockquote>
+<h3 id="2）Spring-Boot自动配置"><a href="#2）Spring-Boot自动配置" class="headerlink" title="2）Spring Boot自动配置"></a>2）Spring Boot自动配置</h3><p><strong>@SpringBootApplication</strong></p>
+<blockquote>
+<p>**作用:**Spring Boot应用标注在某个类上说明这个类是Spring Boot的主配置类，Spring Boot就应该运行这个类的main方法类启动Spring Boot应用；</p>
+</blockquote>
+<p><strong>@SpringBootApplication</strong>是一个组合注解，包含**@SpringBootConfiguration、@ComponentScan、@EnableAutoConfiguration**3个核心注解，它们的作用分别为：</p>
+<blockquote>
+<p><strong>@SpringBootConfiguration：</strong>他的作用与@Configuration注解相同，都是标识一个可以被组件扫描器扫描的配置类，只不过@SpringBootConfiguration是被Spring Boot进行了重新封装命名。</p>
+<p><strong>@ComponentScan：</strong>是一个组件包扫描器，用于将指定包中的注解类自动装配到Spring的Bean容器中</p>
+<p><strong>@EnableAutoConfiguration：</strong>表示开启自动配置功能，该注解是Spring Boot框架最重要的注解，也是实现自动化配置的注解。</p>
+</blockquote>
+<p><strong>@EnableAutoConfiguration</strong>注解也是一个组合注解，它主要包括有**@AutoConfigurationPackage<strong>和</strong>@Import({AutoConfigurationImportSelector.class})**两个核心注解。</p>
+<blockquote>
+<p><strong>@AutoConfigurationPackage：</strong>它的功能是由@Import注解实现的，作用是向容器导入注册的所用组件，导入的组件由Registrar决定。它的主要作用是获取项目主程序启动类所在根目录，从而指定后续组件扫描器要扫描的包位置。</p>
+<p><strong>@Import({AutoConfigurationImportSelector.class})：</strong>给容器中导入一个组件由AutoConfigurationImportSelector.class决定</p>
+</blockquote>
+<h1 id="二、配置文件"><a href="#二、配置文件" class="headerlink" title="二、配置文件"></a>二、配置文件</h1><h2 id="1、全局配置文件"><a href="#1、全局配置文件" class="headerlink" title="1、全局配置文件"></a>1、全局配置文件</h2><blockquote>
+<p>全局配置文件能够修改SpringBoot自动配置的默认值，Spring Boot使用一个application.properties或者application.yaml的文件作为全局配置文件，配置文件名是固定的，该文件存放在src/main/resource 目录或者类路径的/config，一般会选择resource 目录下。</p>
+</blockquote>
+<h3 id="1）application-properties配置文件"><a href="#1）application-properties配置文件" class="headerlink" title="1）application.properties配置文件"></a>1）application.properties配置文件</h3><blockquote>
+<p>我们可以在application.properties文件中定义Spring Boot项目的相关属性，这些相关属性可以是系统属性、环境变量、命令参数等信息，也可以是自定义配置文件名称和位置。</p>
+</blockquote>
+<h3 id="2）application-yaml配置文件"><a href="#2）application-yaml配置文件" class="headerlink" title="2）application.yaml配置文件"></a>2）application.yaml配置文件</h3><blockquote>
+<p>YAML文件格式是Spring Boot支持的一种JSON超级文件格式，相比于传统的Properties配置文件，YAML是以数据为核心，是一种更为直观且容易被计算机识别的数据序列化格式。比JSON、xml等更合适做配置文件；</p>
+</blockquote>
+<h4 id="（1）基本语法"><a href="#（1）基本语法" class="headerlink" title="（1）基本语法"></a>（1）基本语法</h4><p>key: （空格）value            </p>
+<p>以空格的缩进来控制层级关系；只要是左对齐的一列数据，都是同一个层级的</p>
+<p>例：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">	<span class="attr">port:</span> <span class="number">8081</span></span><br><span class="line">	<span class="attr">path:</span> <span class="string">/hello</span></span><br></pre></td></tr></table></figure>
+
+<p>注：属性和值大小写敏感</p>
+<h4 id="（2）值得写法"><a href="#（2）值得写法" class="headerlink" title="（2）值得写法"></a>（2）值得写法</h4><p><strong>value值为普通数据类型（如数字，字符串，布尔等）</strong></p>
+<blockquote>
+<p>当YAML配置文件中配置的属性值为普通数据类型时，可以直接配置对应的属性值，字符串默认不用加上单引号或者双引号；</p>
+</blockquote>
+<ul>
+<li><p>加双引号：不会转义字符串里面的特殊字符；特殊支付会作为本身想表示的意思</p>
+<p>例：name： “zhangsan \n lisi”  输出：zhangsan  换行  lisi</p>
+</li>
+<li><p>加单引号：会转义字符串中的特殊字符；特殊字符最终只是一个普通的字符串数据</p>
+<p>例：name： ‘zhangsan \n  lisi’  输出 ：zhangsan  \n  lisi</p>
+</li>
+</ul>
+<p><strong>value值为数组和单列集合</strong></p>
+<p><strong>缩进式写法：</strong></p>
+<p>用-(空格)值表示数组中的一个元素</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">person:</span></span><br><span class="line">	<span class="attr">hobby:</span></span><br><span class="line">		<span class="bullet">-</span> <span class="string">play</span></span><br><span class="line">		<span class="bullet">-</span> <span class="string">read</span></span><br><span class="line">		<span class="bullet">-</span> <span class="string">sleep</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>行内写法：</strong></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">person:</span></span><br><span class="line">	<span class="attr">hobby:</span> [<span class="string">play</span>,<span class="string">read</span>,<span class="string">sleep</span>]</span><br></pre></td></tr></table></figure>
+
+<p><strong>value值为Map集合和对象</strong></p>
+<p><strong>缩进式写法</strong></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">person:</span></span><br><span class="line">	<span class="attr">map:</span></span><br><span class="line">		<span class="attr">k1:</span> <span class="string">v1</span></span><br><span class="line">		<span class="attr">k2:</span> <span class="string">v2</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>行内式写法</strong></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">person:</span></span><br><span class="line">	<span class="attr">map:</span> &#123;<span class="attr">k1:</span> <span class="string">v1</span>,<span class="attr">k2:</span> <span class="string">v2</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、配置文件值注入"><a href="#2、配置文件值注入" class="headerlink" title="2、配置文件值注入"></a>2、配置文件值注入</h2><h3 id="1）使用-ConfigurationProperties注入属性"><a href="#1）使用-ConfigurationProperties注入属性" class="headerlink" title="1）使用@ConfigurationProperties注入属性"></a>1）使用@ConfigurationProperties注入属性</h3><blockquote>
+<p>Spring Boot提供的@ConfigurationProperties注解来快速。方便地将配置文件中的自定义属性值批量注入到某个Bean对象的多个对应属性中。</p>
+</blockquote>
+<p>配置文件</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">person:</span></span><br><span class="line">  <span class="attr">id:</span> <span class="number">2</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">张三</span></span><br><span class="line">  <span class="attr">hobby:</span> [<span class="string">sing</span>,<span class="string">read</span>,<span class="string">sleep</span>]</span><br><span class="line">  <span class="attr">family:</span> [<span class="string">father</span>,<span class="string">mother</span>]</span><br><span class="line">  <span class="attr">map:</span> &#123;<span class="string">k1:v1</span>,<span class="string">k2:v2</span>&#125;</span><br><span class="line">  <span class="attr">pet:</span> &#123;<span class="string">type:cat</span>,<span class="string">name:tom</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>javaBean</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span>      <span class="comment">//用于将Person类作为Bean注入Spring容器中</span></span><br><span class="line"><span class="meta">@ConfigurationProperties(prefix = &quot;person&quot;)</span>  <span class="comment">//将配置文件中以person开头的属性注入该类中</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;  </span><br><span class="line">    <span class="keyword">private</span> String name;  </span><br><span class="line">    <span class="keyword">private</span> List hobby;  </span><br><span class="line">    <span class="keyword">private</span> String[] family;  </span><br><span class="line">    <span class="keyword">private</span> Map map;</span><br><span class="line">    <span class="keyword">private</span> Pet pet;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码说明：</p>
+<blockquote>
+<p>上述代码使用@Component 和@ConfigurationProperties(prefix = “person”) 将配置文件中的每个属性映射到person类属性中。</p>
+<p>注意：使用ConfigurationProperties注解批量注入属性时，要保证配置文件中的属性与对应实体类的属性名一致，否则无法正确获取并注入属性值。</p>
+</blockquote>
+<p>如果编写配置没有提示，可以导入配置文件处理器</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--导入配置文件处理器，配置文件进行绑定就会有提示--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-configuration-processor<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2）使用-Value注入属性"><a href="#2）使用-Value注入属性" class="headerlink" title="2）使用@Value注入属性"></a>2）使用@Value注入属性</h3><blockquote>
+<p>@Value注解是Spring框架提供的，用来读取配置文件中的属性值并逐个注入Bean对象的对应属性中。Spring Boot框架对Spring框架中的@Value注解进行了默认继承，所以在SpringBoot框架中还可以使用该注解读取和注入配置文件属性值。</p>
+</blockquote>
+<p>配置文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">person.id=1</span><br></pre></td></tr></table></figure>
+
+<p>javaBean</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;person.id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码说明：</p>
+<blockquote>
+<p>上述代码使用@Component 和@Value用于注入Person的id属性。其中，@Value不仅支持注入Person的id属性，而且还可以直接为id属性赋值。</p>
+</blockquote>
+<p>properties配置文件在idea中乱码问题</p>
+<p><img src="https://img-blog.csdnimg.cn/20210523153526595.png" alt="在这里插入图片描述"></p>
+<h3 id="3）-Value获取值和-ConfigurationProperties获取值比较"><a href="#3）-Value获取值和-ConfigurationProperties获取值比较" class="headerlink" title="3）@Value获取值和@ConfigurationProperties获取值比较"></a>3）@Value获取值和@ConfigurationProperties获取值比较</h3><table>
+<thead>
+<tr>
+<th align="center">对比点</th>
+<th align="center">@ConfigurationProperties</th>
+<th align="center">@Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">底层框架</td>
+<td align="center">SpringBoot</td>
+<td align="center">Spring</td>
+</tr>
+<tr>
+<td align="center">功能</td>
+<td align="center">批量注入配置文件中的属性</td>
+<td align="center">一个个指定</td>
+</tr>
+<tr>
+<td align="center">松散绑定（松散语法）</td>
+<td align="center">支持</td>
+<td align="center">不支持</td>
+</tr>
+<tr>
+<td align="center">SpEL表达式</td>
+<td align="center">不支持</td>
+<td align="center">支持</td>
+</tr>
+<tr>
+<td align="center">JSR303数据校验</td>
+<td align="center">支持</td>
+<td align="center">不支持</td>
+</tr>
+<tr>
+<td align="center">复杂类型封装</td>
+<td align="center">支持</td>
+<td align="center">不支持</td>
+</tr>
+</tbody></table>
+<p>总结：</p>
+<p>​        如果说只在某个业务逻辑中需要获取一下配置文件中的某项值，使用@Value</p>
+<p>​        如果说专门编写了一个JavaBean来和配置文件进行映射，就直接使用@ConfigurationProperties</p>
+<p><strong>持续更新中 》》》</strong></p>
+<h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p>“本内容为作者本人亲自编写，如有不对、不严谨或侵权问题请私聊作者进行修改或删除，若是大佬来刷存在感，请您绕行value众号:”</p>
+<p><img src="https://img-blog.csdnimg.cn/2021050917494311.jpg" alt="更多关于编程的知识请关注作者微信公众号: "></p>
+]]></content>
+      <categories>
+        <category>Spring Boot</category>
+      </categories>
+      <tags>
+        <tag>框架</tag>
+        <tag>后端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTML</title>
+    <url>/2021/05/16/html/</url>
+    <content><![CDATA[<h1 id="HTML-简介"><a href="#HTML-简介" class="headerlink" title="HTML 简介"></a>HTML 简介</h1><blockquote>
+<p> Hyper Text Markup Language （超文本标记语言）简写HTML，通过标签来标记要显示的网页中的各个部分。网页文件本身是一种文本文件，通过在文本文件中添加标记符，可以告诉浏览器如何显示其中的内容（如：文字如何处理，画面如何安排，图片如何显示等）</p>
+</blockquote>
+<span id="more"></span>    
+
+<h2 id="HTML-文件的书写规范"><a href="#HTML-文件的书写规范" class="headerlink" title="HTML 文件的书写规范"></a>HTML 文件的书写规范</h2><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span><span class="comment">&lt;!--约束，声明--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh_CN&quot;</span>&gt;</span><span class="comment">&lt;!--html标签表示html的开始  long=&quot;zh_CN&quot;表示中文 html标签中一般分为两个部分，分别为head和body--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span>&lt;!-表示头部信息，一般分为三个部分，分别为title标签、css样式、js脚本--&gt;</span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><span class="comment">&lt;!--表示当前页面使用UTF-8字符集--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="comment">&lt;!--表示标题--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="comment">&lt;!--body标签是整个html页面显示的主题内容--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="HTML标签的介绍"><a href="#HTML标签的介绍" class="headerlink" title="HTML标签的介绍"></a>HTML标签的介绍</h2><h3 id="1-标签的格式："><a href="#1-标签的格式：" class="headerlink" title="1. 标签的格式："></a>1. 标签的格式：</h3><pre><code>&lt;标签名&gt;封装的数据&lt;/标签名&gt;
+</code></pre>
+<h3 id="2-标签名大小写不敏感"><a href="#2-标签名大小写不敏感" class="headerlink" title="2. 标签名大小写不敏感"></a>2. 标签名大小写不敏感</h3><h3 id="3-标签拥有自己的属性"><a href="#3-标签拥有自己的属性" class="headerlink" title="3. 标签拥有自己的属性"></a>3. 标签拥有自己的属性</h3><pre><code>（1）基本属性：可以修改简单的样式效果 
+
+（2）时间属性：可以直接设置事件响应后的代码
+</code></pre>
+<h3 id="4、标签的分类"><a href="#4、标签的分类" class="headerlink" title="4、标签的分类"></a>4、标签的分类</h3><pre><code>（1）单标签：&lt;标签名 /&gt;
+
+（2）双标签：&lt;标签&gt;封装的数据&lt;/标签&gt;
+</code></pre>
+<h3 id="5、标签的语法"><a href="#5、标签的语法" class="headerlink" title="5、标签的语法"></a>5、标签的语法</h3><pre><code>（1）标签不能交叉嵌套
+    例：
+    正确：
+        &lt;div&gt; &lt;span&gt;哈哈哈&lt;/span&gt;&lt;/div&gt;  
+    错误：
+        &lt;div&gt;&lt;span&gt;哈哈哈&lt;/div&gt;&lt;/span&gt; 
+
+（2）标签必须正确关闭
+
+     1&gt;有文本内容的标签
+        例：
+         正确：
+             &lt;div&gt;哈哈哈&lt;/div&gt;
+          错误：
+              &lt;div&gt;哈哈哈
+
+       2&gt;没有文本内容的标签
+        例：
+            正确：&lt;br /&gt;
+             错误：&lt;br&gt;
+             
+（3）属性必须有值，属性值必须加引号
+   例：
+    正确：
+        &lt;font color=”bule”&gt;哈哈哈&lt;/font&gt;
+    错误1：
+        &lt;font color=bule&gt;哈哈哈&lt;/font&gt;
+    错误2：
+        &lt;font color &gt;哈哈哈&lt;/font&gt;
+
+（4）注解不能嵌套
+   例：
+    正确：
+        &lt;!--注解内容--&gt;
+    错误：
+        &lt;!--&lt;!—注解内容--&gt; --&gt;
+
+注：html代码不是很严谨。有时标签不闭合，也不会报错。
+</code></pre>
+<h2 id="HTML常用标签"><a href="#HTML常用标签" class="headerlink" title="HTML常用标签"></a>HTML常用标签</h2><h3 id="1、基本的标签"><a href="#1、基本的标签" class="headerlink" title="1、基本的标签"></a>1、基本的标签</h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;!DOCTYPE&gt;</code></td>
+<td>定义文档类型。</td>
+</tr>
+<tr>
+<td><code>&lt;HTML&gt;</code></td>
+<td>定义html</td>
+</tr>
+<tr>
+<td><code>&lt;body&gt;</code></td>
+<td>定义body元素</td>
+</tr>
+<tr>
+<td><code>&lt;h1&gt; to &lt;h6&gt;</code></td>
+<td>定义标题 1 到标题 6。</td>
+</tr>
+<tr>
+<td><code>&lt;p&gt;</code></td>
+<td>定义段落。</td>
+</tr>
+<tr>
+<td><code>&lt;br&gt;</code></td>
+<td>插入一个换行。</td>
+</tr>
+<tr>
+<td><code>&lt;hr&gt;</code></td>
+<td>定义水平线。</td>
+</tr>
+<tr>
+<td><code>&lt;!----&gt;</code></td>
+<td>定义注释。</td>
+</tr>
+</tbody></table>
+<h3 id="2、字符格式化"><a href="#2、字符格式化" class="headerlink" title="2、字符格式化"></a>2、字符格式化</h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;b&gt;</code></td>
+<td>定义粗体文本。</td>
+</tr>
+<tr>
+<td><code>&lt;font&gt;</code></td>
+<td>不赞成使用。定义文字的字体、尺寸和颜色</td>
+</tr>
+<tr>
+<td><code>&lt;i&gt;</code></td>
+<td>定义斜体文本。</td>
+</tr>
+<tr>
+<td><code>&lt;em&gt;</code></td>
+<td>定义强调文本。</td>
+</tr>
+<tr>
+<td><code>&lt;big&gt;</code></td>
+<td>定义大号字体文本。</td>
+</tr>
+<tr>
+<td><code>&lt;strong&gt;</code></td>
+<td>定义语气更为强烈的强调文本。</td>
+</tr>
+<tr>
+<td><code>&lt;small&gt;</code></td>
+<td>定义小号字体文本。</td>
+</tr>
+<tr>
+<td><code>&lt;sup&gt;</code></td>
+<td>定义上标文本。</td>
+</tr>
+<tr>
+<td><code>&lt;sub&gt;</code></td>
+<td>定义下标文本。</td>
+</tr>
+<tr>
+<td><code>&lt;bdo&gt;</code></td>
+<td>定义文本显示的方向。</td>
+</tr>
+<tr>
+<td><code>&lt;u&gt;</code></td>
+<td>不赞成使用。定义下划线文本。</td>
+</tr>
+</tbody></table>
+<h3 id="3、输出"><a href="#3、输出" class="headerlink" title="3、输出"></a>3、输出</h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;pre&gt;</code></td>
+<td>定义预格式文本</td>
+</tr>
+<tr>
+<td><code>&lt;code&gt; </code></td>
+<td>定义计算机代码文本。</td>
+</tr>
+<tr>
+<td><code>&lt;tt&gt;</code></td>
+<td>定义打字机文本。</td>
+</tr>
+<tr>
+<td><code>&lt;kbd&gt;</code></td>
+<td>定义键盘文本。</td>
+</tr>
+<tr>
+<td><code>&lt;var&gt;</code></td>
+<td>定义变量。</td>
+</tr>
+<tr>
+<td><code>&lt;dfn&gt;</code></td>
+<td>定义定义项目。</td>
+</tr>
+<tr>
+<td><code>&lt;samp&gt;</code></td>
+<td>定义样本文本。</td>
+</tr>
+<tr>
+<td><code>&lt;xmp&gt;</code></td>
+<td>不赞成使用。定义预格式文本。</td>
+</tr>
+</tbody></table>
+<h3 id="4、块级"><a href="#4、块级" class="headerlink" title="4、块级"></a>4、块级</h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;acronym&gt;</code></td>
+<td>定义只取首字母的缩写。</td>
+</tr>
+<tr>
+<td><code>&lt;abbr&gt;</code></td>
+<td>定义缩写。</td>
+</tr>
+<tr>
+<td><code>&lt;address&gt;</code></td>
+<td>定义地址元素。</td>
+</tr>
+<tr>
+<td><code>&lt;blockquote&gt;</code></td>
+<td>定义块引用。</td>
+</tr>
+<tr>
+<td><code>&lt;center&gt;</code></td>
+<td>不赞成使用。定义居中字体。</td>
+</tr>
+<tr>
+<td><code>&lt;q&gt;</code></td>
+<td>定义短的引用。</td>
+</tr>
+<tr>
+<td><code>&lt;cite&gt;</code></td>
+<td>定义引用(citation)。</td>
+</tr>
+<tr>
+<td><code>&lt;ins&gt;</code></td>
+<td>定义被插入文本。</td>
+</tr>
+<tr>
+<td><code>&lt;del&gt;</code></td>
+<td>定义被删除文本。</td>
+</tr>
+<tr>
+<td><code>&lt;s&gt;</code></td>
+<td>不赞成使用。定义加删除线的文本。</td>
+</tr>
+<tr>
+<td><code>&lt;strike&gt;</code></td>
+<td>不赞成使用。定义加删除线的文本。</td>
+</tr>
+</tbody></table>
+<h3 id="5、链接"><a href="#5、链接" class="headerlink" title="5、链接"></a>5、链接</h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;a&gt;</code></td>
+<td>定义锚。</td>
+</tr>
+<tr>
+<td><code>&lt;link&gt;</code></td>
+<td>定义资源引用(resource reference)。</td>
+</tr>
+</tbody></table>
+<h3 id="6、框架"><a href="#6、框架" class="headerlink" title="6、框架"></a>6、框架</h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;frame&gt;</code></td>
+<td>定义框架的子窗口</td>
+</tr>
+<tr>
+<td><code>&lt;frameset&gt;</code></td>
+<td>定义框架结构</td>
+</tr>
+<tr>
+<td><code>&lt;noframes&gt;</code></td>
+<td>定义无框架的节</td>
+</tr>
+<tr>
+<td><code>&lt;iframe&gt;</code></td>
+<td>定义内联框架</td>
+</tr>
+</tbody></table>
+<h3 id="7、输入"><a href="#7、输入" class="headerlink" title="7、输入"></a>7、输入</h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;form&gt;</code></td>
+<td>定义表单。</td>
+</tr>
+<tr>
+<td><code>&lt;input&gt;</code></td>
+<td>定义输入域。</td>
+</tr>
+<tr>
+<td><code>&lt;textarea&gt;</code></td>
+<td>定义文本输入区。</td>
+</tr>
+<tr>
+<td><code>&lt;button&gt;</code></td>
+<td>定义按钮。</td>
+</tr>
+<tr>
+<td><code>&lt;select&gt;</code></td>
+<td>定义下拉式菜单。</td>
+</tr>
+<tr>
+<td><code>&lt;optgroup&gt;</code></td>
+<td>定义选项分组。</td>
+</tr>
+<tr>
+<td><code>&lt;option&gt;</code></td>
+<td>定义下拉列表中的可选项。</td>
+</tr>
+<tr>
+<td><code>&lt;label&gt;</code></td>
+<td>为表单元素创建标记。</td>
+</tr>
+<tr>
+<td><code>&lt;fieldset&gt;</code></td>
+<td>将表单内的相关元素分组。</td>
+</tr>
+<tr>
+<td><code>&lt;legend&gt;</code></td>
+<td>定义框架结构的标题。</td>
+</tr>
+<tr>
+<td><code>&lt;isindex&gt;</code></td>
+<td>不赞成使用。定义单行的输入域</td>
+</tr>
+</tbody></table>
+<h3 id="8、列表"><a href="#8、列表" class="headerlink" title="8、列表"></a>8、列表</h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;ul&gt;</code></td>
+<td>定义无序列表。</td>
+</tr>
+<tr>
+<td><code>&lt;ol&gt;</code></td>
+<td>定义有序列表。</td>
+</tr>
+<tr>
+<td><code>&lt;li&gt;</code></td>
+<td>定义列表项目。</td>
+</tr>
+<tr>
+<td><code>&lt;dir&gt;</code></td>
+<td>不赞成使用。定义目录列表。</td>
+</tr>
+<tr>
+<td><code>&lt;dl&gt;</code></td>
+<td>定义定义列表。</td>
+</tr>
+<tr>
+<td><code>&lt;dt&gt;</code></td>
+<td>定义定义项目。</td>
+</tr>
+<tr>
+<td><code>&lt;dd&gt;</code></td>
+<td>定义定义描述。</td>
+</tr>
+<tr>
+<td><code>&lt;menu&gt;</code></td>
+<td>不赞成使用。定义菜单列表。</td>
+</tr>
+</tbody></table>
+<h3 id="9、图像"><a href="#9、图像" class="headerlink" title="9、图像"></a>9、图像</h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;img&gt;</code></td>
+<td>定义图像。</td>
+</tr>
+<tr>
+<td><code>&lt;map&gt;</code></td>
+<td>定义图像映射。</td>
+</tr>
+<tr>
+<td><code>&lt;area&gt;</code></td>
+<td>定义图像地图内部的区域。</td>
+</tr>
+</tbody></table>
+<h3 id="10、表格"><a href="#10、表格" class="headerlink" title="10、表格"></a>10、表格</h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;table&gt;</code></td>
+<td>定义表格</td>
+</tr>
+<tr>
+<td><code>&lt;caption&gt;</code></td>
+<td>定义表格标题</td>
+</tr>
+<tr>
+<td><code>&lt;th&gt;</code></td>
+<td>定义表格页眉</td>
+</tr>
+<tr>
+<td><code>&lt;tr&gt;</code></td>
+<td>定义表格的行</td>
+</tr>
+<tr>
+<td><code>&lt;td&gt;</code></td>
+<td>定义表格单元</td>
+</tr>
+<tr>
+<td><code>&lt;thead&gt;</code></td>
+<td>定义表格的页眉</td>
+</tr>
+<tr>
+<td><code>&lt;tbody&gt;</code></td>
+<td>定义表格的主体</td>
+</tr>
+<tr>
+<td><code>&lt;tfoot&gt;</code></td>
+<td>定义表格的页脚</td>
+</tr>
+<tr>
+<td><code>&lt;col&gt;</code></td>
+<td>定义用于表格列的属性</td>
+</tr>
+<tr>
+<td><code>&lt;colgroup&gt;</code></td>
+<td>定义表格列的组</td>
+</tr>
+</tbody></table>
+<h3 id="11、样式"><a href="#11、样式" class="headerlink" title="11、样式"></a>11、样式</h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;style&gt;</code></td>
+<td>定义样式定义</td>
+</tr>
+<tr>
+<td><code>&lt;div&gt;</code></td>
+<td>定义文档中的节</td>
+</tr>
+<tr>
+<td><code>&lt;span&gt;</code></td>
+<td>定义文档中的节</td>
+</tr>
+</tbody></table>
+<h3 id="12、元信息"><a href="#12、元信息" class="headerlink" title="12、元信息"></a>12、元信息</h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;head&gt;</code></td>
+<td>定义关于文档的信息</td>
+</tr>
+<tr>
+<td><code>&lt;title&gt;</code></td>
+<td>定义文档的标题</td>
+</tr>
+<tr>
+<td><code>&lt;meta&gt;</code></td>
+<td>定义元信息</td>
+</tr>
+<tr>
+<td><code>&lt;base&gt;</code></td>
+<td>定义某个页面当中的所有链接的基准链接</td>
+</tr>
+<tr>
+<td><code>&lt;basefont&gt;</code></td>
+<td>不赞成使用。定义基准字体</td>
+</tr>
+</tbody></table>
+<h3 id="13、Programming"><a href="#13、Programming" class="headerlink" title="13、Programming"></a>13、Programming</h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;script&gt;</code></td>
+<td>定义一段脚本。</td>
+</tr>
+<tr>
+<td><code>&lt;noscript&gt;</code></td>
+<td>定义 noscript 部分。</td>
+</tr>
+<tr>
+<td><code>&lt;applet&gt;</code></td>
+<td>不赞成使用。定义 applet。</td>
+</tr>
+<tr>
+<td><code>&lt;object&gt;</code></td>
+<td>定义嵌入的对象。</td>
+</tr>
+<tr>
+<td><code>&lt;param&gt;</code></td>
+<td>为对象定义参数。</td>
+</tr>
+</tbody></table>
+<h3 id="14、特殊字符"><a href="#14、特殊字符" class="headerlink" title="14、特殊字符"></a>14、特殊字符</h3><h4 id="（1）最常用的特殊字符"><a href="#（1）最常用的特殊字符" class="headerlink" title="（1）最常用的特殊字符"></a>（1）最常用的特殊字符</h4><table>
+<thead>
+<tr>
+<th>显示结果</th>
+<th>描述</th>
+<th>实体名称</th>
+<th>实体编号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>空格</td>
+<td><code>&amp;nbsp;</code></td>
+<td><code>&amp;#160;</code></td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于号</td>
+<td><code>&amp;lt;</code></td>
+<td><code>&amp;#60;</code></td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于号</td>
+<td><code>&amp;gt;</code></td>
+<td><code>&amp;#62;</code></td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>和号</td>
+<td><code>&amp;amp;</code></td>
+<td><code>&amp;#38;</code></td>
+</tr>
+<tr>
+<td>“</td>
+<td>引号</td>
+<td><code>&amp;quot;</code></td>
+<td><code>&amp;#34;</code></td>
+</tr>
+<tr>
+<td>‘</td>
+<td>撇号</td>
+<td><code>&amp;apos;</code></td>
+<td><code>(IE不支持)    &amp;#39;</code></td>
+</tr>
+</tbody></table>
+<h4 id="（2）其他常用的特殊字符"><a href="#（2）其他常用的特殊字符" class="headerlink" title="（2）其他常用的特殊字符"></a>（2）其他常用的特殊字符</h4><table>
+<thead>
+<tr>
+<th>显示结果</th>
+<th>描述</th>
+<th>实体名称</th>
+<th>实体编号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>￠</td>
+<td>分</td>
+<td><code>&amp;cent;</code></td>
+<td><code>&amp;#162;</code></td>
+</tr>
+<tr>
+<td>£</td>
+<td>镑</td>
+<td><code>&amp;pound;</code></td>
+<td><code>&amp;#163;</code></td>
+</tr>
+<tr>
+<td>¥</td>
+<td>日圆</td>
+<td><code>&amp;yen;</code></td>
+<td><code>&amp;#165;</code></td>
+</tr>
+<tr>
+<td>§</td>
+<td>节</td>
+<td><code>&amp;sect;</code></td>
+<td><code>&amp;#167;</code></td>
+</tr>
+<tr>
+<td>©</td>
+<td>版权</td>
+<td><code>&amp;copy;</code></td>
+<td><code>&amp;#169;</code></td>
+</tr>
+<tr>
+<td>®</td>
+<td>注册商标</td>
+<td><code>&amp;reg;</code></td>
+<td><code>&amp;#174;</code></td>
+</tr>
+<tr>
+<td>×</td>
+<td>乘号</td>
+<td><code>&amp;times;</code></td>
+<td><code>&amp;#215;</code></td>
+</tr>
+<tr>
+<td>÷</td>
+<td>除号</td>
+<td><code>&amp;divide;</code></td>
+<td><code>&amp;#247;</code></td>
+</tr>
+</tbody></table>
+<h2 id="HTML常用标签样例与具体说明"><a href="#HTML常用标签样例与具体说明" class="headerlink" title="HTML常用标签样例与具体说明"></a>HTML常用标签样例与具体说明</h2><h3 id="1、标题标签"><a href="#1、标题标签" class="headerlink" title="1、标题标签"></a>1、标题标签</h3><p>代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="comment">&lt;!--body标签是整个html页面显示的主题内容--&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 标题标签</span></span><br><span class="line"><span class="comment">	需求 1 ：演示标题 1 到 标题 6 的</span></span><br><span class="line"><span class="comment">	h1 - h6 都是标题标签</span></span><br><span class="line"><span class="comment">	h1 最大</span></span><br><span class="line"><span class="comment">	h6 最小</span></span><br><span class="line"><span class="comment">	align 属性是对齐属性</span></span><br><span class="line"><span class="comment">	left 左对齐 ( 默认 )</span></span><br><span class="line"><span class="comment">	center 剧中</span></span><br><span class="line"><span class="comment">	right 右对齐</span></span><br><span class="line"><span class="comment">	--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h1</span> <span class="attr">align</span>=<span class="string">&quot;left&quot;</span>&gt;</span>标题 1<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h2</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span>标题 2<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h3</span> <span class="attr">align</span>=<span class="string">&quot;right&quot;</span>&gt;</span>标题 3<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h4</span>&gt;</span>标题 4<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h5</span>&gt;</span>标题 5<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h6</span>&gt;</span>标题 6<span class="tag">&lt;/<span class="name">h6</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h7</span>&gt;</span>标题 7<span class="tag">&lt;/<span class="name">h7</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2、超链接"><a href="#2、超链接" class="headerlink" title="2、超链接"></a>2、超链接</h3><p>代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- a 标签是 超链接</span></span><br><span class="line"><span class="comment">href 属性设置连接的地址</span></span><br><span class="line"><span class="comment">target 属性设置哪个目标进行跳转：</span></span><br><span class="line"><span class="comment">  _self 表示当前页面 ( 默认值 )</span></span><br><span class="line"><span class="comment">  _blank 表示打开新页面来进行跳转</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://localhost:8080&quot;</span>&gt;</span>百度<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://localhost:8080&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_self&quot;</span>&gt;</span>百度_self<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://localhost:8080&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span>百度_blank<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3、列表标签"><a href="#3、列表标签" class="headerlink" title="3、列表标签"></a>3、列表标签</h3><p>代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- ul 是无序列表</span></span><br><span class="line"><span class="comment">type 属性可以修改列表项前面的符号</span></span><br><span class="line"><span class="comment">li 是列表项</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">type</span>=<span class="string">&quot;none&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>赵四<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>刘能<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>小沈阳<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>宋小宝<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="4、img标签"><a href="#4、img标签" class="headerlink" title="4、img标签"></a>4、img标签</h3><p> img 标签可以在 html 页面上显示图片。</p>
+<p>代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- img 标签是图片标签 , 用来显示图片</span></span><br><span class="line"><span class="comment">src 属性可以设置图片的路径</span></span><br><span class="line"><span class="comment">width 属性设置图片的宽度</span></span><br><span class="line"><span class="comment">height 属性设置图片的高度</span></span><br><span class="line"><span class="comment">border 属性设置图片边框大小</span></span><br><span class="line"><span class="comment">alt 属性设置当指定路径找不到图片时 , 用来代替显示的文本内容</span></span><br><span class="line"><span class="comment">在 JavaSE 中路径也分为相对路径和绝对路径 .</span></span><br><span class="line"><span class="comment">相对路径 : 从工程名开始算</span></span><br><span class="line"><span class="comment">绝对路径 : 盘符 :/ 目录 / 文件名</span></span><br><span class="line"><span class="comment">在 web 中路径分为相对路径和绝对路径两种</span></span><br><span class="line"><span class="comment">相对路径 :</span></span><br><span class="line"><span class="comment">. 表示当前文件所在的目录</span></span><br><span class="line"><span class="comment">.. 表示当前文件所在的上一级目录</span></span><br><span class="line"><span class="comment">文件名 表示当前文件所在目录的文件 , 相当于 ./ 文件名 ./ 可以省略</span></span><br><span class="line"><span class="comment">绝对路径 :</span></span><br><span class="line"><span class="comment">正确格式是 : http://ip:port/ 工程名 / 资源路径</span></span><br><span class="line"><span class="comment">错误格式是 : 盘符 :/ 目录 / 文件名</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;1.jpg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;200&quot;</span> <span class="attr">height</span>=<span class="string">&quot;260&quot;</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span> <span class="attr">alt</span>=<span class="string">&quot; 美女找不到&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;../2.jpg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;200&quot;</span> <span class="attr">height</span>=<span class="string">&quot;260&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;../imgs/3.jpg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;200&quot;</span> <span class="attr">height</span>=<span class="string">&quot;260&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;../imgs/4.jpg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;200&quot;</span> <span class="attr">height</span>=<span class="string">&quot;260&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;../imgs/5.jpg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;200&quot;</span> <span class="attr">height</span>=<span class="string">&quot;260&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;../imgs/6.jpg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;200&quot;</span> <span class="attr">height</span>=<span class="string">&quot;260&quot;</span> /&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="5、表格标签"><a href="#5、表格标签" class="headerlink" title="5、表格标签"></a>5、表格标签</h3><p>代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">需求 1：做一个 带表头的 ，三行，三列的表格，并显示边框</span></span><br><span class="line"><span class="comment">需求 2：修改表格的宽度，高度，表格的对齐方式，单元格间距。</span></span><br><span class="line"><span class="comment">table 标签是表格标签</span></span><br><span class="line"><span class="comment">border 设置表格标签</span></span><br><span class="line"><span class="comment">width 设置表格宽度</span></span><br><span class="line"><span class="comment">height 设置表格高度</span></span><br><span class="line"><span class="comment">align 设置表格相对于页面的对齐方式</span></span><br><span class="line"><span class="comment">cellspacing 设置单元格间距</span></span><br><span class="line"><span class="comment">tr 是行标签</span></span><br><span class="line"><span class="comment">th 是表头标签</span></span><br><span class="line"><span class="comment">td 是单元格标签</span></span><br><span class="line"><span class="comment">align 设置单元格文本对齐方式</span></span><br><span class="line"><span class="comment">b 是加粗标签</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span> <span class="attr">width</span>=<span class="string">&quot;300&quot;</span> <span class="attr">height</span>=<span class="string">&quot;300&quot;</span> <span class="attr">cellspacing</span>=<span class="string">&quot;0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>1.1<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>1.2<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>1.3<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>2.1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>2.2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>2.3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>3.1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>3.2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>3.3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="6、跨行跨列表格标签"><a href="#6、跨行跨列表格标签" class="headerlink" title="6、跨行跨列表格标签"></a>6、跨行跨列表格标签</h3><p>代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 需求 1：</span></span><br><span class="line"><span class="comment">新建一个五行，五列的表格，</span></span><br><span class="line"><span class="comment">第一行，第一列的单元格要跨两列，</span></span><br><span class="line"><span class="comment">第二行第一列的单元格跨两行，</span></span><br><span class="line"><span class="comment">第四行第四列的单元格跨两行两列。</span></span><br><span class="line"><span class="comment">colspan 属性设置跨列</span></span><br><span class="line"><span class="comment">rowspan 属性设置跨行</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">width</span>=<span class="string">&quot;500&quot;</span> <span class="attr">height</span>=<span class="string">&quot;500&quot;</span> <span class="attr">cellspacing</span>=<span class="string">&quot;0&quot;</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">&quot;2&quot;</span>&gt;</span>我是跨两列<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>1.3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>1.4<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>1.5<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span> <span class="attr">rowspan</span>=<span class="string">&quot;2&quot;</span>&gt;</span>我是跨两列<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>2.2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>2.3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>2.4<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>2.5<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>3.2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>3.3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>3.4<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>3.5<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>4.1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>4.2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>4.3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">&quot;2&quot;</span> <span class="attr">rowspan</span>=<span class="string">&quot;2&quot;</span>&gt;</span>我夸两行两列<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>5.1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>5.2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>5.3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="7、表单标签"><a href="#7、表单标签" class="headerlink" title="7、表单标签"></a>7、表单标签</h3><p>代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--需求 1:创建一个个人信息注册的表单界面。包含用户名，密码，确认密码。性别（单选），兴趣爱好（多选），国籍（下拉列表）。</span></span><br><span class="line"><span class="comment">隐藏域，自我评价（多行文本域）。重置，提交。--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">form 标签就是表单</span></span><br><span class="line"><span class="comment">input type=text 是文件输入框 value 设置默认显示内容</span></span><br><span class="line"><span class="comment">input type=password 是密码输入框 value 设置默认显示内容</span></span><br><span class="line"><span class="comment">input type=radio 是单选框 name 属性可以对其进行分组 checked=&quot;checked&quot;表示默认选中</span></span><br><span class="line"><span class="comment">input type=checkbox 是复选框 checked=&quot;checked&quot;表示默认选中</span></span><br><span class="line"><span class="comment">input type=reset 是重置按钮 value 属性修改按钮上的文本</span></span><br><span class="line"><span class="comment">input type=submit 是提交按钮 value 属性修改按钮上的文本</span></span><br><span class="line"><span class="comment">input type=button 是按钮 value 属性修改按钮上的文本</span></span><br><span class="line"><span class="comment">input type=file 是文件上传域</span></span><br><span class="line"><span class="comment">input type=hidden 是隐藏域 当我们要发送某些信息，而这些信息，不需要用户参与，就可以使用隐藏域（提交的</span></span><br><span class="line"><span class="comment">时候同时发送给服务器）</span></span><br><span class="line"><span class="comment">select 标签是下拉列表框</span></span><br><span class="line"><span class="comment">option 标签是下拉列表框中的选项 selected=&quot;selected&quot;设置默认选中</span></span><br><span class="line"><span class="comment">textarea 表示多行文本输入框 （起始标签和结束标签中的内容是默认值）</span></span><br><span class="line"><span class="comment">rows 属性设置可以显示几行的高度</span></span><br><span class="line"><span class="comment">cols 属性设置每行可以显示几个字符宽度</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">	用户名称：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">value</span>=<span class="string">&quot; 默认值&quot;</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	用户密码：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;abc&quot;</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	确认密码：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;abc&quot;</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	性别：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;sex&quot;</span>/&gt;</span>男</span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;sex&quot;</span> <span class="attr">checked</span>=<span class="string">&quot;checked&quot;</span> /&gt;</span>女<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	兴趣爱好：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">checked</span>=<span class="string">&quot;checked&quot;</span> /&gt;</span>Java</span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> /&gt;</span>JavaScript</span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> /&gt;</span>C++<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	国籍：<span class="tag">&lt;<span class="name">select</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">option</span>&gt;</span>--请选择国籍--<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">option</span> <span class="attr">selected</span>=<span class="string">&quot;selected&quot;</span>&gt;</span>中国<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">option</span>&gt;</span>美国<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">option</span>&gt;</span>小日本<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">select</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	自我评价：</span><br><span class="line">		<span class="tag">&lt;<span class="name">textarea</span> <span class="attr">rows</span>=<span class="string">&quot;10&quot;</span> <span class="attr">cols</span>=<span class="string">&quot;20&quot;</span>&gt;</span></span><br><span class="line">			我才是默认值</span><br><span class="line">		<span class="tag">&lt;/<span class="name">textarea</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;reset&quot;</span> <span class="attr">value</span>=<span class="string">&quot;abc&quot;</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>表单格式化：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span>用户注册<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span> 用户名称：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">value</span>=<span class="string">&quot; 默认值&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span> 用户密码：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;abc&quot;</span>/&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>确认密码：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;abc&quot;</span>/&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>性别：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;sex&quot;</span>/&gt;</span>男</span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;sex&quot;</span> <span class="attr">checked</span>=<span class="string">&quot;checked&quot;</span> /&gt;</span>女</span><br><span class="line">            <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span> 兴趣爱好：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">checked</span>=<span class="string">&quot;checked&quot;</span> /&gt;</span>Java</span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> /&gt;</span>JavaScript</span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> /&gt;</span>C++</span><br><span class="line">            <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>国籍：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">select</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">option</span>&gt;</span>--请选择国籍--<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">option</span> <span class="attr">selected</span>=<span class="string">&quot;selected&quot;</span>&gt;</span>中国<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">option</span>&gt;</span>美国<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">option</span>&gt;</span>小日本<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>自我评价：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">rows</span>=<span class="string">&quot;10&quot;</span> <span class="attr">cols</span>=<span class="string">&quot;20&quot;</span>&gt;</span>我才是默认值<span class="tag">&lt;/<span class="name">textarea</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;reset&quot;</span> /&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>/&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">&lt;/form</span><br></pre></td></tr></table></figure>
+<p>表单提交细节：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--form 标签是表单标签</span></span><br><span class="line"><span class="comment">action 属性设置提交的服务器地址</span></span><br><span class="line"><span class="comment">method 属性设置提交的方式 GET(默认值)或 POST</span></span><br><span class="line"><span class="comment">表单提交的时候，数据没有发送给服务器的三种情况：</span></span><br><span class="line"><span class="comment">1、表单项没有 name 属性值</span></span><br><span class="line"><span class="comment">2、单选、复选（下拉列表中的 option 标签）都需要添加 value 属性，以便发送给服务器</span></span><br><span class="line"><span class="comment">3、表单项不在提交的 form 标签中</span></span><br><span class="line"><span class="comment">GET 请求的特点是：</span></span><br><span class="line"><span class="comment">1、浏览器地址栏中的地址是：action 属性[+?+请求参数]</span></span><br><span class="line"><span class="comment">请求参数的格式是：name=value&amp;name=value</span></span><br><span class="line"><span class="comment">2、不安全</span></span><br><span class="line"><span class="comment">3、它有数据长度的限制</span></span><br><span class="line"><span class="comment">POST 请求的特点是：</span></span><br><span class="line"><span class="comment">1、浏览器地址栏中只有 action 属性值</span></span><br><span class="line"><span class="comment">2、相对于 GET 请求要安全</span></span><br><span class="line"><span class="comment">3、理论上没有数据长度的限制</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;http://localhost:8080&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;action&quot;</span> <span class="attr">value</span>=<span class="string">&quot;login&quot;</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h1</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span>用户注册<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">table</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span> 用户名称：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot; 默认值&quot;</span>/&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span> 用户密码：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;abc&quot;</span>/&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>性别：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;sex&quot;</span> <span class="attr">value</span>=<span class="string">&quot;boy&quot;</span>/&gt;</span>男</span><br><span class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;sex&quot;</span> <span class="attr">checked</span>=<span class="string">&quot;checked&quot;</span> <span class="attr">value</span>=<span class="string">&quot;girl&quot;</span> /&gt;</span>女</span><br><span class="line">			<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span> 兴趣爱好：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;hobby&quot;</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">checked</span>=<span class="string">&quot;checked&quot;</span> <span class="attr">value</span>=<span class="string">&quot;java&quot;</span>/&gt;</span>Java</span><br><span class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;hobby&quot;</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">value</span>=<span class="string">&quot;js&quot;</span>/&gt;</span>JavaScript</span><br><span class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;hobby&quot;</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">value</span>=<span class="string">&quot;cpp&quot;</span>/&gt;</span>C++</span><br><span class="line">			<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>国籍：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">&quot;country&quot;</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;none&quot;</span>&gt;</span>--请选择国籍--<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;cn&quot;</span> <span class="attr">selected</span>=<span class="string">&quot;selected&quot;</span>&gt;</span>中国<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;usa&quot;</span>&gt;</span>美国<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;jp&quot;</span>&gt;</span>小日本<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>自我评价：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">&quot;desc&quot;</span> <span class="attr">rows</span>=<span class="string">&quot;10&quot;</span> <span class="attr">cols</span>=<span class="string">&quot;20&quot;</span>&gt;</span>我才是默认值<span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;reset&quot;</span> /&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>/&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="8、其他标签"><a href="#8、其他标签" class="headerlink" title="8、其他标签"></a>8、其他标签</h3><p>代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--需求 1：div、span、p 标签的演示</span></span><br><span class="line"><span class="comment">div 标签 默认独占一行</span></span><br><span class="line"><span class="comment">span 标签 它的长度是封装数据的长度</span></span><br><span class="line"><span class="comment">p 段落标签 默认会在段落的上方或下方各空出一行来（如果已有就不再空）</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>div 标签 1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>div 标签 2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>span 标签 1<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>span 标签 2<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>p 段落标签 1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>p 段落标签 2<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p>“本内容为作者本人亲自编写，如有不对、不严谨或侵权问题请私聊作者进行修改或删除，若是大佬来刷存在感，请您绕行，更多关于编程的知识请关注作者微信公众号:”</p>
+<p><img src="https://img-blog.csdnimg.cn/2021050917494311.jpg" alt="更多关于编程的知识请关注作者微信公众号: "></p>
+]]></content>
+      <categories>
+        <category>Java Web</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+</search>
